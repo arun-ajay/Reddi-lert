@@ -2,12 +2,22 @@
 
 import praw
 import time
+import os
 import config
 from datetime import datetime
 
-brands = open("names.txt").read().splitlines()
+#brands = open("names.txt").read().splitlines()
 
+'''
+current_dir = os.path.dirname(__file__)
+parent_dir = os.path.split(current_dir)[0]
+file_path = os.path.join(parent_dir,'TestLists/','names.txt')
+brands = open(file_path)
+'''
 
+brands = open(os.path.join(os.path.split(os.path.direname(__file__))[0],'TestLists/','names.txt').read.splitlines()
+
+#TODO: USE config json...
 reddit = praw.Reddit(client_id= config.praw_id,
                     client_secret=config.praw_secret,
                     user_agent='my user agent')
