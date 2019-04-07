@@ -27,7 +27,7 @@ def get_time():
     
 def time_subtract(start,now):
     time_format = '%Y-%m-%d %H:%M:%S'
-    return (dt.strptime(now,time_format) - dt.strptime(start,time_format)).seconds
+    return (dt.strptime(now,time_format) - dt.strptime(start,time_format)).days
 
 def key_word_check(key_list,title,title_storage):
     for key in key_list:
@@ -84,10 +84,10 @@ while True:
         if new_deals_list:
             print("Emailing New Deals!")
             alert(new_deals_list)
-        time.sleep(5) #scan every minute
+        time.sleep(60) #scan every minute
         current_time = get_time()
         time_diff = time_subtract(start_time,current_time)
         print("Time elapsed:",time_diff)
-        if( time_diff > 30):
+        if( time_diff >= 1):
             break
 
