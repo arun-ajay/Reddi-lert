@@ -1,6 +1,7 @@
 #Don't track content of these folders
 env/
 TestLists/
+config/
 __pycache__/
 
 #Vim temporary files
