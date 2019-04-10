@@ -14,3 +14,7 @@ config.py
 
 #Text files
 names.txt
+
+
+#Json Files
+config.json
