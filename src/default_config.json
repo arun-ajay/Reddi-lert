@@ -1,0 +1,13 @@
+{
+	"Reddit":
+	{
+		"praw_id": "PUT PRAW ID HERE",
+		"praw_secret": "PUT PRAW SECRET HERE"
+	},
+	"Emails":
+	{
+		"sender":"PUT SENDER EMAIL HERE",
+		"emailpassword": "PUT SENDER EMAIL PASSWORD HERE",
+		"receiver": "PUT RECEIVER EMAIL HERE"
+	}
+}
