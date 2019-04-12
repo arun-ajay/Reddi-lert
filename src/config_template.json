@@ -7,7 +7,7 @@
 	"Emails":
 	{
 		"sender":"PUT SENDER EMAIL HERE",
-		"emailpassword": "PUT SENDER EMAIL PASSWORD HERE",
+		"sender_password": "PUT SENDER EMAIL PASSWORD HERE",
 		"receiver": "PUT RECEIVER EMAIL HERE"
 	}
 }
