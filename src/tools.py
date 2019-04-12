@@ -20,33 +20,27 @@ def key_word_check(key_list,title,title_storage):
     return False
 
 def alert(item_list,config_data):
-
-    sender = config_data.sender()
-    sender_password = config_data.sender_password()
-    receiver = config_data.receiver()
-
     smtp_server = "smtp.gmail.com:587"
 
     body = ""
-
     for title,url in item_list:
-        body = body + title + "\n" + url +  "\n\n"
+        body += title + "\n" + url +  "\n\n"
 
     
     title = 'My title'
     msg_content = '<h2>{title} > <font color="green">OK</font></h2>\n'.format(title=title)
     message = MIMEText(msg_content, 'html')
-    message['From'] = sender
-    message['To'] = receiver
+    message['From'] = config_data.sender()
+    message['To'] = config_data.receiver()
     message['Subject'] = "New Deals" + str(get_time())
 
     msg_full = body
 
     server = smtplib.SMTP('smtp.gmail.com:587')
     server.starttls()
-    server.login(sender, sender_password)
-    server.sendmail(sender,
-                    [receiver, receiver],
+    server.login(config_data.sender(), config_data.sender_password())
+    server.sendmail(config_data.sender(),
+                    [config_data.receiver(), config_data.receiver()],
                     msg_full)
     server.quit()
 

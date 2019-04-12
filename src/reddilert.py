@@ -15,16 +15,10 @@ brands = open('names.txt').read().splitlines()
 
 information = Config()
 
-#with open('config.json') as config_file:
-#    config_data = json.load(config_file)
+
 
 praw_id = information.praw_id()
 praw_secret = information.praw_secret()
-
-#praw_id = str(config_data["Reddit"]["praw_id"])
-#praw_secret = str(config_data["Reddit"]["praw_secret"])
-
-
 
 
 reddit = praw.Reddit(client_id= praw_id,
