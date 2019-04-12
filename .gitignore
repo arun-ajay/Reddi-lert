@@ -9,8 +9,6 @@ __pycache__/
 *.swp
 *.swo
 
-#Python files
-config.py
 
 #Text files
 names.txt

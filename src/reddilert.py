@@ -7,18 +7,22 @@ import os
 import json
 
 
-#Custom FIles
+#Custom Files
 from tools import *
-
+from config import Config
 
 brands = open('names.txt').read().splitlines()
 
+information = Config()
 
-with open('config.json') as config_file:
-    config_data = json.load(config_file)
+#with open('config.json') as config_file:
+#    config_data = json.load(config_file)
 
-praw_id = str(config_data["Reddit"]["praw_id"])
-praw_secret = str(config_data["Reddit"]["praw_secret"])
+praw_id = information.praw_id()
+praw_secret = information.praw_secret()
+
+#praw_id = str(config_data["Reddit"]["praw_id"])
+#praw_secret = str(config_data["Reddit"]["praw_secret"])
 
 
 
@@ -30,10 +34,10 @@ reddit = praw.Reddit(client_id= praw_id,
 
 
 while True:
-    old_deals_list = []
-    start_time = get_time()
+    old_deals_list = [] #Collection of titles that were already notifed
+    start_time = get_time() #Baseline for time reset
     while True:
-        new_deals_list = []
+        new_deals_list = [] #Temporary list of new deals posted in past 30 secs
         for submission in reddit.subreddit('frugalmalefashion').new(limit=10):
             subtitle = submission.title
             suburl = submission.url
@@ -42,7 +46,7 @@ while True:
                     old_deals_list.append(subtitle)
         if new_deals_list:
             print("Emailing New Deals!")
-            alert(new_deals_list,config_data)
+            alert(new_deals_list,information)
         time.sleep(60) #scan every minute
         current_time = get_time()
         time_diff = time_subtract(start_time,current_time)

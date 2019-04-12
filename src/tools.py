@@ -21,9 +21,9 @@ def key_word_check(key_list,title,title_storage):
 
 def alert(item_list,config_data):
 
-    sender = config_data["Emails"]["sender"]
-    sender_password = config_data["Emails"]["emailpassword"]
-    receiver = config_data["Emails"]["receiver"]
+    sender = config_data.sender()
+    sender_password = config_data.sender_password()
+    receiver = config_data.receiver()
 
     smtp_server = "smtp.gmail.com:587"
 
