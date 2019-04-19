@@ -44,7 +44,7 @@ while True:
         time.sleep(60) #scan every minute
         current_time = get_time()
         time_diff = time_subtract(start_time,current_time)
-        print("Time elapsed:",time_diff)
-        if( time_diff >= 1):
+        print("Time elapsed:",time_diff/60, "minutes.")
+        if( time_diff >= 3600):
             break
 
