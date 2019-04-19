@@ -8,6 +8,6 @@
 	{
 		"sender":"PUT SENDER EMAIL HERE",
 		"sender_password": "PUT SENDER EMAIL PASSWORD HERE",
-		"receiver": "PUT RECEIVER EMAIL HERE"
+		"receiver": ["PUT RECEIVER EMAIL HERE, NOTE YOU CAN PUT MULTIPLE HERE"]
 	}
 }
