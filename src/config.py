@@ -21,6 +21,7 @@ class Config():
         return str(self.config_data["Emails"]["sender_password"])
     
     def receiver(self):
-        return str(self.config_data["Emails"]["receiver"])
+        return self.config_data["Emails"]["receiver"]
+        #return str(self.config_data["Emails"]["receiver"])
 
 
