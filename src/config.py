@@ -22,6 +22,5 @@ class Config():
     
     def receiver(self):
         return self.config_data["Emails"]["receiver"]
-        #return str(self.config_data["Emails"]["receiver"])
 
 
