@@ -11,7 +11,7 @@ def get_time():
 
 def time_subtract(start,now):
     time_format = '%Y-%m-%d %H:%M:%S'
-    return (dt.strptime(now,time_format) - dt.strptime(start,time_format)).days
+    return (dt.strptime(now,time_format) - dt.strptime(start,time_format)).seconds
 
 def key_word_check(key_list,title,title_storage):
     for key in key_list:
@@ -29,19 +29,20 @@ def alert(item_list,config_data):
     
     title = 'My title'
     msg_content = '<h2>{title} > <font color="green">OK</font></h2>\n'.format(title=title)
-    message = MIMEText(msg_content, 'html')
+    message = MIMEText(msg_content, 'UTF-8')
     message['From'] = config_data.sender()
     message['To'] = config_data.receiver()
     message['Subject'] = "New Deals" + str(get_time())
 
-    msg_full = body
+    msg_full = body.encode('utf-8')
 
     server = smtplib.SMTP('smtp.gmail.com:587')
     server.starttls()
     server.login(config_data.sender(), config_data.sender_password())
-    server.sendmail(config_data.sender(),
-                    [config_data.receiver(), config_data.receiver()],
-                    msg_full)
+    for receiver in config_data.receiver():
+        print("Sending mail to:",receiver)
+        server.sendmail(config_data.sender(),[receiver,receiver],msg_full)
+        print("Done sending mail to:",receiver)
     server.quit()
 
 
